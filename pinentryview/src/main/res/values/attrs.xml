@@ -9,5 +9,6 @@
         <attr name="digit_size" format="dimension"/>
         <attr name="digit_space" format="dimension"/>
         <attr name="digit_width" format="dimension"/>
+        <attr name="digit_line_spacing" format="dimension"/>
     </declare-styleable>
 </resources>

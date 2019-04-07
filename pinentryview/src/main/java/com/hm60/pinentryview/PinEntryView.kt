@@ -98,6 +98,11 @@ class PinEntryView : AppCompatEditText {
         if (typedArray.hasValue(R.styleable.PinEntryView_digit_width))
             mCharSize = typedArray.getDimension(R.styleable.PinEntryView_digit_width, mCharSize)
 
+        if (typedArray.hasValue(R.styleable.PinEntryView_digit_line_spacing)) {
+            mLineSpacingAnimated = typedArray.getDimension(R.styleable.PinEntryView_digit_line_spacing, toPxF(12))
+            mLineSpacing = typedArray.getDimension(R.styleable.PinEntryView_digit_line_spacing, toPxF(12))
+        }
+
 
         typedArray.recycle()
 
