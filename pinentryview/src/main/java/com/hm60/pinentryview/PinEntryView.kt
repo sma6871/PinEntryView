@@ -153,7 +153,7 @@ class PinEntryView : AppCompatEditText {
 
         })
 
-        mLineSpacingAnimated = if (hasAnimation) 0f else toPxF(12)
+        mLineSpacingAnimated = if (hasAnimation) 0f else mLineSpacing
 
     }
 
