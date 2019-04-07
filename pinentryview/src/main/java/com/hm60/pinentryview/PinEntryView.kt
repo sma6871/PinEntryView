@@ -241,12 +241,12 @@ class PinEntryView : AppCompatEditText {
     }
 
     private fun animate1() {
-        val valueAnimator = ValueAnimator.ofFloat(0F, toPxF(12))
+        val valueAnimator = ValueAnimator.ofFloat(0F, mLineSpacing)
         valueAnimator.duration = 200
         valueAnimator.interpolator = AccelerateDecelerateInterpolator()
         valueAnimator.addUpdateListener {
             mLineSpacingAnimated = it.animatedValue as Float
-            animatedAlpha = ((it.animatedValue as Float) / toPxF(12) * 255).toInt()
+            animatedAlpha = ((it.animatedValue as Float) / mLineSpacing * 255).toInt()
             postInvalidate()
         }
         valueAnimator.addListener(object : Animator.AnimatorListener {
