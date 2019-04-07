@@ -17,7 +17,7 @@ import androidx.core.content.ContextCompat
 
 class PinEntryView : AppCompatEditText {
 
-    private var maxLength = 4 // default length
+    var maxLength = 4 // default length
     private var mSpace = toPxF(16)
     private var mCharSize = toPxF(32)
     private var mLineSpacing = toPxF(12)
@@ -30,13 +30,13 @@ class PinEntryView : AppCompatEditText {
     private var animatedAlpha = 255
 
 
-    private var linePaint: Paint = Paint().apply {
+    var linePaint: Paint = Paint().apply {
         isAntiAlias = true
         color = getColor(R.color.silverGray)
         style = Paint.Style.FILL
     }
 
-    private var textPaint: TextPaint = TextPaint().apply {
+    var textPaint: TextPaint = TextPaint().apply {
         isAntiAlias = true
         color = getColor(R.color.coal)
         textSize = spToPxF(18)
@@ -45,6 +45,25 @@ class PinEntryView : AppCompatEditText {
 
     var lineColor = getColor(R.color.silverGray)
     var filledLineColor = getColor(R.color.green)
+
+
+    fun onPinChange(onChange: (isComplete: Boolean, length: Int) -> Unit) {
+        addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {
+                onChange(s.length == maxLength, s.length)
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+        })
+    }
 
     constructor(context: Context) : super(context) {
         init(context, null)
@@ -269,5 +288,6 @@ class PinEntryView : AppCompatEditText {
         })
         valueAnimator.start()
     }
+
 
 }
